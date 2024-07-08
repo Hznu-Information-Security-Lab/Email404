@@ -4,16 +4,11 @@ namespace Email404.db;
 
 public partial class ManageSystemContext : DbContext
 {
-    private string ServerIp { get;  }
-    private string User { get; }
-    private string Passsword { get; }
-    private string DataBaseName { get; }
-    
     public ManageSystemContext(
-        string serverIp="192.168.5.11", 
-        string user = "pub_root", 
-        string passsword = "123456", 
-        string dataBaseName="manage_system")
+        string serverIp = "192.168.5.11",
+        string user = "pub_root",
+        string passsword = "123456",
+        string dataBaseName = "manage_system")
     {
         ServerIp = serverIp;
         User = user;
@@ -21,12 +16,12 @@ public partial class ManageSystemContext : DbContext
         DataBaseName = dataBaseName;
     }
 
-    public ManageSystemContext(DbContextOptions<ManageSystemContext> options, 
-        string serverIp="192.168.5.11", 
-        string user = "pub_root", 
-        string passsword = "123456", 
-        string dataBaseName="manage_system"
-        )
+    public ManageSystemContext(DbContextOptions<ManageSystemContext> options,
+        string serverIp = "192.168.5.11",
+        string user = "pub_root",
+        string passsword = "123456",
+        string dataBaseName = "manage_system"
+    )
         : base(options)
     {
         ServerIp = serverIp;
@@ -34,6 +29,11 @@ public partial class ManageSystemContext : DbContext
         Passsword = passsword;
         DataBaseName = dataBaseName;
     }
+
+    private string ServerIp { get; }
+    private string User { get; }
+    private string Passsword { get; }
+    private string DataBaseName { get; }
 
     public virtual DbSet<Achievement> Achievements { get; set; }
 

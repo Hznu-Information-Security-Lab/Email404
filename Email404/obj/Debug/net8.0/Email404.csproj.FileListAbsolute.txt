@@ -96,3 +96,4 @@ C:\Users\15441\RiderProjects\Email404\Email404\bin\Debug\net8.0\ru\Microsoft.Cod
 C:\Users\15441\RiderProjects\Email404\Email404\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\15441\RiderProjects\Email404\Email404\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\15441\RiderProjects\Email404\Email404\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\15441\RiderProjects\Email404\Email404\obj\Debug\net8.0\Email404.sourcelink.json
