@@ -2,7 +2,6 @@
 
 public static class MailTemplate
 {
-    
     public const string MailTitleTemplate = """
                                             <h1>{title}</h1>
                                             <hr/>

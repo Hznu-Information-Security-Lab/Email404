@@ -1,10 +1,17 @@
 ﻿{
+  "mail": {
+    "username": "",
+    "password": "",
+    "host": "",
+    "senderMail": ""
+  },
   "receivers": [
     {
       "mail": "1544189298@qq.com",
       "groups": [
         "大三自主短学期",
-        "新大三自主短学期"
+        "新大三自主短学期",
+        "新大四"
       ]
     }
   ],
@@ -24,6 +31,13 @@
       "type": "auto",
       "data": {
         "name": "新大三自主短学期"
+      }
+    },
+    {
+      "name": "新大四",
+      "type": "auto",
+      "data": {
+        "name": "新大四"
       }
     }
   ]

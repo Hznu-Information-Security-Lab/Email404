@@ -2,9 +2,13 @@
 
 public class MailTemplateBuilder
 {
-    private string _title = "";
     private readonly List<UserRecordData> _data = [];
-    public static MailTemplateBuilder Title(string title) => new() { _title = title };
+    private string _title = "";
+
+    public static MailTemplateBuilder Title(string title)
+    {
+        return new MailTemplateBuilder { _title = title };
+    }
 
     public void UserData(UserRecordData recordData)
     {
@@ -18,11 +22,8 @@ public class MailTemplateBuilder
 
         return _data.Aggregate(text, (current, userRecordData) => current + MailTemplate.MailContentTemplateDaily
             .Replace("{userName}", userRecordData.UserName)
-            .Replace("{time}", userRecordData.Hours.ToString() ?? "该成员未签到" )
+            .Replace("{time}", userRecordData.Hours.ToString() ?? "该成员未签到")
             .Replace("{today}", userRecordData.ContSummary ?? "该成员未提交简报")
             .Replace("{tomorrow}", userRecordData.ContPlan ?? "该成员未提交计划"));
     }
-    
-    
-    
 }
