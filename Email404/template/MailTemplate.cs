@@ -15,4 +15,15 @@ public static class MailTemplate
                                                     <h5>明日计划:{tomorrow}</h5>
                                                     <br>
                                                    """;
+    
+
+
+    public const string MailContentTemplateWeekly = """
+                                                    <h2>{userName}</h2>
+                                                    <h5>本周签到时长:{time}h</h5>
+                                                    <h5>本周总结:{today}</h5>
+                                                    <h5>下周计划:{tomorrow}</h5>
+                                                    <br>
+                                                   """;
+
 }

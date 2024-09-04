@@ -64,29 +64,37 @@ internal static class Program
                 {
                     throw new FormatException($"不存在的group:{configurationReceiverGroup}");
                 }
-
                 var builder = MailTemplateBuilder.Title(groupDefinition.Name);
                 var groupName = groupDefinition.Data.Name;
-                var members = groupDefinition.Type switch
-                {
-                    "custom" => from report in system.GetStudentReportToday().AsEnumerable()
-                        join member in groupDefinition.Data.Members on report.UserName equals member
-                        select report,
-                    "auto" => from report in system.GetStudentReportToday().AsEnumerable()
-                        where report.UserGroup == groupName
-                        select report,
-                    _ => throw new UnreachableException($"unknown type of group {groupDefinition.Type}")
-                };
+                var queryString = configuration.isDaily
+                    ? system.GetStudentReportToday()
+                    : system.GetStudentReportThisWeek();
+                var members = UserRecordDatas(groupDefinition, queryString, groupName);
                 foreach (var userRecordData in members) builder.UserData(userRecordData);
 
                 text += builder.Build();
             }
 
             Logger.Log(LogLevel.Information, "正在发送邮件至:{}", configurationReceiver.Mail);
-            await sender.SendMailAsync(configurationReceiver.Mail, "每日报告", text);
+            await sender.SendMailAsync(configurationReceiver.Mail, configuration.isDaily ? "每日报告" : "每周报告", text);
         }
 
         Logger.Log(LogLevel.Information, "任务完成");
+    }
+
+    private static IEnumerable<UserRecordData> UserRecordDatas(Group groupDefinition, IQueryable<UserRecordData> queryString, string groupName)
+    {
+        var members = groupDefinition.Type switch
+        {
+            "custom" => from report in queryString.AsEnumerable()
+                join member in groupDefinition.Data.Members on report.UserName equals member
+                select report,
+            "auto" => from report in queryString.AsEnumerable()
+                where report.UserGroup == groupName
+                select report,
+            _ => throw new UnreachableException($"unknown type of group {groupDefinition.Type}")
+        };
+        return members;
     }
 
     private static Configuration LoadConfiguration()

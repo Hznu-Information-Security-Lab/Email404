@@ -9,6 +9,8 @@ public class Configuration
     [JsonPropertyName("groups")] public List<Group> Groups { get; init; }
 
     [JsonPropertyName("mail")] public MailConfiguration Mail { get; init; }
+    
+    [JsonPropertyName("isDaily")] public bool isDaily { get; init; }
 
-    public static Configuration Empty => new() { Receivers = [], Groups = [], Mail = new MailConfiguration() };
+    public static Configuration Empty => new() { Receivers = [], Groups = [], Mail = new MailConfiguration(),isDaily = false};
 }
