@@ -1,43 +1,104 @@
 ﻿{
   "mail": {
-    "username": "",
-    "password": "",
-    "host": "",
-    "senderMail": ""
+    "username": "1772775873@qq.com",
+    "password": "jubcyxqveqcdebgj",
+    "host": "smtp.qq.com",
+    "senderMail": "1772775873@qq.com"
   },
   "receivers": [
     {
+      "mail": "liuxuejiao0406@163.com",
+      "enable": false,
+      "groups": [
+        "挑战杯",
+        "攻防一组",
+        "攻防二组",
+        "攻防三组",
+        "本创智能车",
+        "网络安全虚拟实验平台项目",
+        "区块链智能合约安全检测"
+      ]
+    },
+    {
       "mail": "1544189298@qq.com",
       "groups": [
-        "大三自主短学期",
-        "新大三自主短学期",
-        "新大四"
+        "挑战杯",
+        "攻防一组",
+        "攻防二组",
+        "攻防三组",
+        "本创智能车",
+        "网络安全虚拟实验平台项目",
+        "区块链智能合约安全检测"
+      ]
+    },
+    {
+      "mail": "3539306573@qq.com",
+      "enable": false,
+      "groups": [
+        "攻防一组",
+        "攻防二组",
+        "攻防三组",
+        "本创智能车",
+        "网络安全虚拟实验平台项目",
+        "区块链智能合约安全检测"
+      ]
+    },
+    {
+      "mail": "junmeisun@hznu.edu.cn",
+      "enable": false,
+      "groups": [
+        "挑战杯"
       ]
     }
   ],
   "groups": [
     {
-      "name": "大三自主短学期",
-      "type": "custom",
+      "name": "攻防一组",
+      "type": "auto",
       "data": {
-        "members": [
-          "包乾琳",
-          "谢海宁"
-        ]
+        "name": "攻防一组"
       }
     },
     {
-      "name": "新大三自主短学期",
+      "name": "攻防二组",
       "type": "auto",
       "data": {
-        "name": "新大三自主短学期"
+        "name": "攻防二组"
       }
     },
     {
-      "name": "新大四",
+      "name": "攻防三组",
       "type": "auto",
       "data": {
-        "name": "新大四"
+        "name": "攻防三组"
+      }
+    },
+    {
+      "name": "区块链智能合约安全检测",
+      "type": "auto",
+      "data": {
+        "name": "区块链智能合约安全检测"
+      }
+    },
+    {
+      "name": "网络安全虚拟实验平台项目",
+      "type": "auto",
+      "data": {
+        "name": "网络安全虚拟实验平台项目"
+      }
+    },
+    {
+      "name": "本创智能车",
+      "type": "auto",
+      "data": {
+        "name": "本创智能车"
+      }
+    },
+    {
+      "name": "挑战杯",
+      "type": "auto",
+      "data": {
+        "name": "挑战杯"
       }
     }
   ]

@@ -7,48 +7,60 @@ using Email404.db;
 using Email404.mail;
 using Email404.template;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 
 namespace Email404;
 
 internal static class Program
 {
-    private static readonly ILoggerFactory  Factory = LoggerFactory.Create(x=>x.AddConsole());
+    private static readonly ILoggerFactory Factory = LoggerFactory.Create(x =>
+    {
+        //x.AddConsole();
+        x.AddNLog();
+    });
+
     private static readonly ILogger Logger = Factory.CreateLogger("Email404");
+
     public static async Task Main(string[] args)
     {
-        
-        Logger.Log(LogLevel.Information,"Program Start");
+        Logger.Log(LogLevel.Information, "Program Start");
         var system = new ManageSystemContext();
         var configuration = LoadConfiguration();
-        if (configuration.Mail.SenderMail == "" || 
+        if (configuration.Mail.SenderMail == "" ||
             configuration.Mail.PassWord == "" ||
             configuration.Mail.UserName == "" ||
             configuration.Mail.Host == ""
-            )
+           )
         {
-            Logger.Log(LogLevel.Error,"请填写mail项下的参数");
+            Logger.Log(LogLevel.Error, "请填写mail项下的参数");
             return;
         }
+
         var sender = new MailSender(
             configuration.Mail.UserName,
             configuration.Mail.PassWord,
             configuration.Mail.Host,
             configuration.Mail.SenderMail
-            );
+        );
         foreach (var configurationReceiver in configuration.Receivers)
         {
-            Logger.Log(LogLevel.Information,"邮件接受者:{}",configurationReceiver.Mail);
+            if (!configurationReceiver.Enabled)
+            {
+                Logger.Log(LogLevel.Debug, "{} is disabled and is skipped", configurationReceiver.Mail);
+                continue;
+            }
+
+            Logger.Log(LogLevel.Information, "邮件接受者:{}", configurationReceiver.Mail);
             var text = "";
             foreach (var configurationReceiverGroup in configurationReceiver.Groups)
             {
-                
-                Logger.Log(LogLevel.Information,"正在处理:{}",configurationReceiverGroup);
+                Logger.Log(LogLevel.Information, "正在处理:{}", configurationReceiverGroup);
                 Group groupDefinition;
                 try
                 {
                     groupDefinition = configuration.Groups.First(x => x.Name == configurationReceiverGroup);
                 }
-                catch (InvalidOperationException ex)
+                catch (InvalidOperationException)
                 {
                     throw new FormatException($"不存在的group:{configurationReceiverGroup}");
                 }
@@ -69,10 +81,12 @@ internal static class Program
 
                 text += builder.Build();
             }
-            Logger.Log(LogLevel.Information,"正在发送邮件至:{}",configurationReceiver.Mail);
+
+            Logger.Log(LogLevel.Information, "正在发送邮件至:{}", configurationReceiver.Mail);
             await sender.SendMailAsync(configurationReceiver.Mail, "每日报告", text);
         }
-        Logger.Log(LogLevel.Information,"任务完成");
+
+        Logger.Log(LogLevel.Information, "任务完成");
     }
 
     private static Configuration LoadConfiguration()
@@ -80,9 +94,10 @@ internal static class Program
         if (!File.Exists("configuration.json"))
         {
             File.WriteAllText("configuration.json", JsonSerializer.Serialize(Configuration.Empty));
-            Logger.Log(LogLevel.Error,"请填写配置文件:configuration.json");
+            Logger.Log(LogLevel.Error, "请填写配置文件:configuration.json");
             Environment.Exit(0);
         }
+
         return JsonSerializer.Deserialize<Configuration>(File.ReadAllText("configuration.json")) ??
                throw new InvalidDataException("文件格式错误或者不存在");
     }

@@ -1,4 +1,6 @@
-﻿namespace Email404.template;
+﻿using System.Globalization;
+
+namespace Email404.template;
 
 public class MailTemplateBuilder
 {
@@ -22,7 +24,8 @@ public class MailTemplateBuilder
 
         return _data.Aggregate(text, (current, userRecordData) => current + MailTemplate.MailContentTemplateDaily
             .Replace("{userName}", userRecordData.UserName)
-            .Replace("{time}", userRecordData.Hours.ToString() ?? "该成员未签到")
+            .Replace("{time}",
+                Math.Round((double)(userRecordData.Hours ?? 0), 2).ToString(CultureInfo.CurrentCulture) ?? "该成员未签到")
             .Replace("{today}", userRecordData.ContSummary ?? "该成员未提交简报")
             .Replace("{tomorrow}", userRecordData.ContPlan ?? "该成员未提交计划"));
     }
