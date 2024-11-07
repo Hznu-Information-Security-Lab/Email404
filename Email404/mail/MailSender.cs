@@ -4,15 +4,16 @@ using System.Net.Mail;
 namespace Email404.mail;
 
 public class MailSender(
-    string userName = "1772775873@qq.com",
-    string password = "jubcyxqveqcdebgj",
+    string userName = "1728026105@qq.com",
+    string password = "zrpzbjfaiaylcjeh",
     string host = "smtp.qq.com",
-    string senderMail = "1772775873@qq.com"
+    string senderMail = "1728026105@qq.com"
 )
 {
     public async Task SendMailAsync(MailAddress destination, string subject, string body)
     {
         var mail = new SmtpClient(host);
+        mail.EnableSsl = true;
         mail.Credentials = new NetworkCredential(userName, password);
         var fromMail = new MailAddress(senderMail);
         var message = new MailMessage(fromMail, destination)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YDU8/LznkSMCNAUn/D53S/siu34Gnd12KtXtNV+Xcdg4+A/T37taqvKhYH1tS8XPFP+QBHrYGL5n06xoHvN1sA==",
+  "dgSpecHash": "jd1oujGloKdcspKDGJcWVfk0TLz0aZnHha9sgrEE8uzgULM2++KgfeeZXjV+x9XqDz/WpY9onajr00i/Ii+bqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\15441\\RiderProjects\\Email404\\Email404\\Email404.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\15441\\.nuget\\packages\\microsoft.extensions.options\\9.0.0-preview.5.24306.7\\microsoft.extensions.options.9.0.0-preview.5.24306.7.nupkg.sha512",
     "C:\\Users\\15441\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.0-preview.5.24306.7\\microsoft.extensions.options.configurationextensions.9.0.0-preview.5.24306.7.nupkg.sha512",
     "C:\\Users\\15441\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0-preview.5.24306.7\\microsoft.extensions.primitives.9.0.0-preview.5.24306.7.nupkg.sha512",
+    "C:\\Users\\15441\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.5\\microsoft.net.illink.tasks.8.0.5.nupkg.sha512",
     "C:\\Users\\15441\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\15441\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
     "C:\\Users\\15441\\.nuget\\packages\\nlog\\5.3.2\\nlog.5.3.2.nupkg.sha512",

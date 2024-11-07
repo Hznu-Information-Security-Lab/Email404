@@ -6,7 +6,9 @@ public record UserRecordData(
     string? ContSummary,
     string? ContPlan,
     DateTime? SubTime,
-    decimal? Time)
+    decimal? Time,
+    decimal? PlanCount = 0
+    )
 
 {
     public string UserName { get; set; } = UserName;
@@ -17,4 +19,6 @@ public record UserRecordData(
     public decimal? Time { get; set; } = Time;
 
     public decimal? Hours => Time / 3600;
+
+    public decimal? PlanCount { get; } = PlanCount;
 }
