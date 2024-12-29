@@ -1,0 +1,7 @@
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\Email404.Desktop.pdb
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\configuration.json
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\nlog.config
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\Email404.exe
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\Email404.runtimeconfig.json
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\Email404.pdb
+C:\Users\15441\RiderProjects\Email404\Email404.Desktop\bin\Release\net8.0-windows\win-x64\publish\Email404.Desktop.exe

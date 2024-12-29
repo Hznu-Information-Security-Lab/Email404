@@ -1,0 +1,25 @@
+{
+  "receivers": [
+    {
+      "mail": "1544189298@qq.com",
+      "enable": true,
+      "groups": [
+        "A"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "A",
+      "type": "custom",
+      "data": {}
+    }
+  ],
+  "mail": {
+    "username": null,
+    "password": null,
+    "host": null,
+    "senderMail": null
+  },
+  "isDaily": false
+}

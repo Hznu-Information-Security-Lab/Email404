@@ -5,7 +5,7 @@ namespace Email404.db;
 public partial class ManageSystemContext : DbContext
 {
     public ManageSystemContext(
-        string serverIp = "192.168.5.11",
+        string serverIp = "172.22.236.10",
         string user = "pub_root",
         string passsword = "123456",
         string dataBaseName = "manage_system")

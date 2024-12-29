@@ -69,7 +69,7 @@ public static class StudentDataFetcher
 
     public static IQueryable<UserRecordData> GetStudentReportToday(this ManageSystemContext context)
     {
-        return context.GetStudentReportByDuration(DateTime.Today, DateTime.Today.AddDays(1));
+        return context.GetStudentReportByDuration(DateTime.Today.AddDays(-1), DateTime.Today);
     }
     
     public static IQueryable<UserRecordData> GetStudentReportThisWeek(this ManageSystemContext context)
@@ -80,15 +80,20 @@ public static class StudentDataFetcher
         return context.GetStudentReportByDuration(startOfLastWeek,today + TimeSpan.FromDays(1));
     }
 
+    public static void ExportToCsv(string fileName,DateTime from,DateTime to)
+    {
+        var context = new ManageSystemContext();
+        var result = context.GetStudentReportByDuration(from,to);
+        var join = string.Join("\n",result.Select(x => $"{x.UserName},{x.UserGroup},{x.Hours},{x.PlanCount}").ToArray());
+        const string title = "名称,组名,签到时数,周报提交次数\n";
+        File.WriteAllText(fileName,title + join);
+    }
 
     public static void Test()
     {
-        Console.WriteLine(DateTime.Today);
-        var context = new ManageSystemContext();
-        var result = context.GetStudentReportByDuration(new DateTime(DateTime.Now.Year,DateTime.Now.Month,7,0,0,0),new DateTime(DateTime.Now.Year,DateTime.Now.Month,14,0,0,0));
-        var join = string.Join("\n",result.Select(x => $"{x.UserName},{x.UserGroup},{x.Hours},{x.PlanCount}").ToArray());
-        var title = "名称,组名,签到时数,周报提交次数\n";
-        // foreach (var valueTuple in result) Console.WriteLine(valueTuple);
-        File.WriteAllText("result.csv",title + join);
+        ExportToCsv("export_20240901_20241112.csv", new DateTime(2024, 9, 1), new DateTime(2024, 11, 13));
+        ExportToCsv("export_last_two_weeks.csv", new DateTime(2024, 10, 29), new DateTime(2024, 11, 13));
+
+        
     }
 }

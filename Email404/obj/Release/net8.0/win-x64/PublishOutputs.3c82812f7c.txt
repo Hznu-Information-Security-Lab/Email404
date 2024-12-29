@@ -1,0 +1,4 @@
+C:\Users\15441\RiderProjects\Email404\Email404\bin\Release\net8.0\win-x64\publish\Email404.pdb
+C:\Users\15441\RiderProjects\Email404\Email404\bin\Release\net8.0\win-x64\publish\configuration.json
+C:\Users\15441\RiderProjects\Email404\Email404\bin\Release\net8.0\win-x64\publish\nlog.config
+C:\Users\15441\RiderProjects\Email404\Email404\bin\Release\net8.0\win-x64\publish\Email404.exe

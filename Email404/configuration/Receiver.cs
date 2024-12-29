@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using CommunityToolkit.Mvvm.Collections;
 
 namespace Email404.configuration;
 
